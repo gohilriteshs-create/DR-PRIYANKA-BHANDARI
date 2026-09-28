@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { MedicalDataProvider, useMedicalData } from './context/MedicalDataContext';
 import { PortalProvider, usePortal } from './context/PortalContext';
 import { Navbar } from './components/Navbar';
@@ -319,6 +320,7 @@ export default function App() {
     <MedicalDataProvider>
       <PortalProvider>
         <AppShell />
+        <Analytics />
       </PortalProvider>
     </MedicalDataProvider>
   );
