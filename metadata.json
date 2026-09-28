@@ -1,0 +1,6 @@
+{
+  "name": "Dr. Priyanka Bhandari, MBBS",
+  "description": "Official practice website of Dr. Priyanka Bhandari, BAMS, CGO, PGDEMS, General Physician Consultant at Hinduja Hospital. Explore medical services, patient care and appointments.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="lifeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="50%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#78350f" />
+    </linearGradient>
+    <linearGradient id="herbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="lCardShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#022c22" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#lifeBg)" />
+
+  <!-- Ambient Light Pattern -->
+  <circle cx="220" cy="180" r="180" fill="#10b981" opacity="0.15" />
+  <circle cx="620" cy="400" r="200" fill="#f59e0b" opacity="0.12" />
+
+  <!-- Workspace Card -->
+  <g filter="url(#lCardShadow)">
+    <rect x="70" y="70" width="660" height="460" rx="24" fill="#ffffff" fill-opacity="0.97" />
+    <rect x="70" y="70" width="660" height="460" rx="24" fill="none" stroke="#d1fae5" stroke-width="2" />
+  </g>
+
+  <!-- Top Bar -->
+  <rect x="70" y="70" width="660" height="75" rx="24" fill="#ecfdf5" />
+  <line x1="70" y1="145" x2="730" y2="145" stroke="#a7f3d0" stroke-width="1.5" />
+
+  <g transform="translate(105, 95)">
+    <rect x="0" y="0" width="220" height="28" rx="14" fill="#d1fae5" />
+    <circle cx="14" cy="14" r="5" fill="#059669" />
+    <text x="28" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#065f46" letter-spacing="0.5">LIFESTYLE &amp; AYURVEDA</text>
+
+    <rect x="232" y="0" width="180" height="28" rx="14" fill="#fef3c7" stroke="#fde68a" stroke-width="1" />
+    <text x="246" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#92400e">Integrative Health (BAMS)</text>
+
+    <rect x="500" y="2" width="90" height="24" rx="12" fill="#d1fae5" stroke="#a7f3d0" stroke-width="1" />
+    <text x="545" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#047857" text-anchor="middle">HOLISTIC</text>
+  </g>
+
+  <!-- Left: Lifestyle Protocols -->
+  <g transform="translate(105, 175)">
+    <rect x="0" y="0" width="280" height="315" rx="16" fill="#f0fdf4" stroke="#dcfce7" stroke-width="1.5" />
+
+    <text x="20" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#064e3b">Personalized Wellness Habits</text>
+    <text x="20" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#047857">Harmonizing Diet, Sleep, Stress &amp; Routine</text>
+    <line x1="20" y1="60" x2="260" y2="60" stroke="#bbf7d0" stroke-width="1" />
+
+    <!-- Item 1: Dietary Nutrition & Gut Health -->
+    <g transform="translate(20, 75)">
+      <rect x="0" y="0" width="240" height="42" rx="8" fill="#ffffff" stroke="#bbf7d0" stroke-width="1" />
+      <circle cx="20" cy="21" r="10" fill="#dcfce7" />
+      <path d="M16 21 L19 24 L25 17" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" />
+      <text x="38" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#14532d">Nutritional Therapy &amp; Diet</text>
+      <text x="38" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#15803d">Anti-inflammatory Meals &amp; Digestion</text>
+    </g>
+
+    <!-- Item 2: Restorative Sleep & Circadian Rhythm -->
+    <g transform="translate(20, 127)">
+      <rect x="0" y="0" width="240" height="42" rx="8" fill="#ffffff" stroke="#bbf7d0" stroke-width="1" />
+      <circle cx="20" cy="21" r="10" fill="#dcfce7" />
+      <path d="M16 21 L19 24 L25 17" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" />
+      <text x="38" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#14532d">Sleep Architecture &amp; Hygiene</text>
+      <text x="38" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#15803d">Deep Rest Protocols &amp; Circadian Align</text>
+    </g>
+
+    <!-- Item 3: Stress Management & Cortisol Balance -->
+    <g transform="translate(20, 179)">
+      <rect x="0" y="0" width="240" height="42" rx="8" fill="#ffffff" stroke="#bbf7d0" stroke-width="1" />
+      <circle cx="20" cy="21" r="10" fill="#dcfce7" />
+      <path d="M16 21 L19 24 L25 17" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" />
+      <text x="38" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#14532d">Stress Regulation (Mind-Body)</text>
+      <text x="38" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#15803d">Pranayama, Vagal Tone &amp; Cortisol</text>
+    </g>
+
+    <!-- Item 4: Integrative Herbal Therapeutics -->
+    <g transform="translate(20, 231)">
+      <rect x="0" y="0" width="240" height="42" rx="8" fill="#ffffff" stroke="#bbf7d0" stroke-width="1" />
+      <circle cx="20" cy="21" r="10" fill="#dcfce7" />
+      <path d="M16 21 L19 24 L25 17" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" />
+      <text x="38" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#14532d">Safe Herbal &amp; Tonic Guidance</text>
+      <text x="38" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#15803d">Ashwagandha, Tulsi &amp; Rejuvenation</text>
+    </g>
+
+    <!-- Footer Note -->
+    <rect x="20" y="280" width="240" height="24" rx="6" fill="#dcfce7" />
+    <text x="140" y="296" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="700" fill="#166534" text-anchor="middle">SUSTAINABLE HABITS · PROVEN RESULTS</text>
+  </g>
+
+  <!-- Right: Healing Mortar, Herbal Leaves & Wellness Motif -->
+  <g transform="translate(420, 175)">
+    <circle cx="135" cy="140" r="125" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="2" />
+    <circle cx="135" cy="140" r="105" fill="#ffffff" stroke="#10b981" stroke-width="1.5" stroke-dasharray="8 6" />
+
+    <!-- Mortar & Pestle & Botanical Leaf -->
+    <g transform="translate(135, 145)">
+      <!-- Mortar Bowl -->
+      <path d="M-45 -5 C-45 40, 45 40, 45 -5 L55 -5 C55 -15, -55 -15, -55 -5 Z" fill="#047857" />
+      <!-- Pestle -->
+      <path d="M12 -38 L32 -60 C36 -65, 46 -60, 42 -52 L22 -15 Z" fill="#b45309" />
+      <!-- Herbal Leaves Sprouting Out -->
+      <path d="M-15 -15 C-40 -40, -10 -65, 0 -35 C10 -65, 40 -40, 15 -15 Z" fill="url(#herbGrad)" />
+      <path d="M0 -35 L0 -10" stroke="#065f46" stroke-width="2" />
+    </g>
+
+    <text x="135" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#065f46" text-anchor="middle" letter-spacing="0.5">
+      HOLISTIC BALANCE &amp; WELLBEING
+    </text>
+    <text x="135" y="292" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#047857" text-anchor="middle">
+      Modern Clinical Care Meets Traditional Vitality
+    </text>
+
+    <!-- Badge -->
+    <g transform="translate(10, 312)">
+      <rect x="0" y="0" width="250" height="38" rx="10" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1" />
+      <text x="125" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#065f46" text-anchor="middle">
+        Long-Term Vitality &amp; Prevention
+      </text>
+    </g>
+  </g>
+</svg>
