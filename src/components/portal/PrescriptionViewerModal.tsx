@@ -62,7 +62,7 @@ export const PrescriptionViewerModal: React.FC<PrescriptionViewerModalProps> = (
         <div class="header">
           <div class="title">DR. PRIYANKA BHANDARI, BAMS, CGO, PGDEMS</div>
           <div class="meta">General Physician Consultant · Hinduja Hospital · Reg. No: MMC / State Council</div>
-          <div class="meta">Clinic Desk | In-Clinic & Tele-Consultations</div>
+          <div class="meta">Shop No. 3, Divya CHS, Kurar Village, Malad East, Mumbai - 400097 | Phone: +91 75066 51415</div>
         </div>
 
         <div class="patient-box">
@@ -195,13 +195,13 @@ export const PrescriptionViewerModal: React.FC<PrescriptionViewerModalProps> = (
               <div className="text-xs text-slate-600 sm:text-right space-y-0.5">
                 <div className="font-semibold text-slate-800 flex items-center sm:justify-end gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-sky-700" />
-                  <span>Koramangala, Bengaluru - 560034</span>
+                  <span>Kurar Village, Malad East, Mumbai - 400097</span>
                 </div>
                 <div className="flex items-center sm:justify-end gap-1.5">
                   <Phone className="w-3.5 h-3.5 text-sky-700" />
-                  <span>Clinic: +91 98765 43210</span>
+                  <span>Clinic: +91 75066 51415</span>
                 </div>
-                <div className="text-slate-400">Timings: Mon - Sat: 9:00 AM - 7:30 PM</div>
+                <div className="text-slate-400">Timings: Mon - Sat: 10:00 AM - 9:00 PM</div>
               </div>
             </div>
           </div>

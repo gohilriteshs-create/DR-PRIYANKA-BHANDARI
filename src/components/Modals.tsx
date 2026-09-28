@@ -69,6 +69,9 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
             alt={`${service.name} consultation at Hinduja Hospital`}
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = '/services/general-consultation.svg';
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-black/20" />
           

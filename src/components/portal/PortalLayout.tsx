@@ -268,14 +268,14 @@ export const PortalLayout: React.FC<PortalLayoutProps> = ({ onBackToWebsite }) =
               Direct Clinic Desk
             </div>
             <p className="text-slate-300 text-[11px] leading-relaxed">
-              Mon - Sat: 9:00 AM - 7:30 PM<br />
+              Mon - Sat: 10:00 AM - 9:00 PM<br />
               Emergency Help: 112 / 108
             </p>
             <a
-              href="tel:+919876543210"
+              href="tel:+917506651415"
               className="inline-block pt-1 text-sky-400 font-bold hover:underline"
             >
-              Call +91 98765 43210
+              Call +91 75066 51415
             </a>
           </div>
         </aside>

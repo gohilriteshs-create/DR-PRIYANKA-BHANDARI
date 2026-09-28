@@ -11,9 +11,12 @@ import {
   CheckCircle2,
   Copy,
   Check,
-  Compass
+  Compass,
+  Train,
+  Car
 } from 'lucide-react';
 import { useMedicalData } from '../context/MedicalDataContext';
+import { ClinicInteractiveMap } from './ClinicInteractiveMap';
 
 export const ContactSection: React.FC = () => {
   const { profile, clinicContact } = useMedicalData();
@@ -217,98 +220,43 @@ export const ContactSection: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Google Maps Location Embed & Accessibility Guidance */}
+          {/* Right Column: Interactive Clinic Map & Transit Navigation */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-2xs overflow-hidden">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                <div>
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-sky-800 uppercase tracking-wider">
-                    <Compass className="w-3.5 h-3.5" />
-                    <span>Malad East Clinic Map</span>
-                  </div>
-                  <h3 className="text-base font-bold text-slate-900 mt-0.5">
-                    Shop Number 3, Divya CHS LTD
-                  </h3>
-                  <p className="text-xs text-slate-500">
-                    Triveni Nagar Rd, Kurar Village, Malad East, Mumbai 400097
-                  </p>
-                </div>
+            <ClinicInteractiveMap
+              clinicName={clinicContact.clinicName}
+              doctorName={profile.name}
+              qualification={profile.qualification}
+              address={fullAddress}
+              phone={clinicContact.phone}
+              directionsUrl={directionsUrl}
+              googleMapsEmbedUrl={mapEmbedUrl}
+            />
 
-                <div className="flex items-center gap-2 self-start sm:self-center">
-                  <button
-                    type="button"
-                    onClick={handleCopyAddress}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors"
-                    title="Copy full address"
-                  >
-                    {copiedAddress ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-teal-600" />
-                        <span className="text-teal-700">Copied</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5 text-slate-500" />
-                        <span>Copy</span>
-                      </>
-                    )}
-                  </button>
-
-                  <a
-                    href={directionsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-sky-800 hover:bg-sky-900 rounded-lg shadow-2xs transition-colors whitespace-nowrap"
-                  >
-                    <Navigation className="w-3.5 h-3.5" />
-                    <span>Get Directions</span>
-                  </a>
-                </div>
+            {/* Practical Arrival & Landmark Guide */}
+            <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-2xs space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-teal-600" />
+                  <span>Visitor &amp; Patient Arrival Notes</span>
+                </span>
+                <span className="text-[11px] text-slate-400">Ground floor access</span>
               </div>
 
-              {/* Google Maps Embed Container with Pin Overlay */}
-              <div className="relative aspect-4/3 sm:aspect-[16/11] w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner">
-                <iframe
-                  title="Dr. Priyanka Bhandari Clinic Location - Shop Number 3, Divya CHS LTD, Malad East"
-                  src={mapEmbedUrl}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={false}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0 w-full h-full"
-                />
-
-                {/* Quiet Floating Clinic Badge on Map */}
-                <div className="absolute top-3 left-3 z-10 bg-white/95 backdrop-blur-md px-3 py-2 rounded-xl border border-slate-200 shadow-md flex items-center gap-2.5 max-w-[280px]">
-                  <div className="w-7 h-7 rounded-lg bg-sky-700 text-white flex items-center justify-center shrink-0">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-xs font-bold text-slate-900 truncate">
-                      Dr. Priyanka Bhandari Clinic
-                    </div>
-                    <div className="text-[11px] text-slate-500 truncate">
-                      Shop No. 3, Divya CHS, Malad East
-                    </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs text-slate-600">
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-2.5">
+                  <Train className="w-4 h-4 text-sky-700 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-slate-800 block text-[11px]">Via Metro or Local Train</strong>
+                    <span>Get off at Kurar Metro (Line 7) or Malad Railway Station (East exit). Direct auto-rickshaws available to Divya CHS.</span>
                   </div>
                 </div>
-              </div>
 
-              {/* Transit & Arrival Notes */}
-              <div className="mt-5 space-y-2 text-xs text-slate-600">
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                  <span>
-                    <strong>Exact Address:</strong> Shop Number 3, Divya CHS LTD, Triveni Nagar Rd, Vaishet Pada, Kurar Village, Malad East, Mumbai 400097.
-                  </span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                  <span>
-                    <strong>Accessibility:</strong> Easy vehicular approach from Western Express Highway and Malad railway station with street parking nearby.
-                  </span>
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-2.5">
+                  <Car className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-slate-800 block text-[11px]">By Car / Two-Wheeler</strong>
+                    <span>Direct turn from Western Express Highway into Triveni Nagar Road. Two-wheeler &amp; patient drop-off parking available outside Divya CHS.</span>
+                  </div>
                 </div>
               </div>
             </div>

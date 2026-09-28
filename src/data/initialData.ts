@@ -281,45 +281,73 @@ export const initialTestimonials: PatientTestimonial[] = [
     id: "test-1",
     patientName: "S. K. Verma",
     initials: "SK",
-    location: "Resident Patient",
+    location: "Malad East, Mumbai",
     review: "Dr. Priyanka Bhandari gave me complete attention during my consultation. She listened patiently without any rush and clearly explained why each test was necessary. A very reassuring and professional doctor.",
     rating: 5,
     date: "12 May 2026",
-    consultationType: "General Consultation",
-    enabled: true
+    consultationType: "General In-Clinic Consultation",
+    enabled: true,
+    verified: true
   },
   {
     id: "test-2",
     patientName: "A. Mehrotra",
     initials: "AM",
-    location: "Family Consultation",
+    location: "Goregaon, Mumbai",
     review: "I took my mother for a routine preventive health checkup. Dr. Bhandari reviewed her blood pressure records meticulously and suggested gentle lifestyle adjustments that made a noticeable difference.",
     rating: 5,
     date: "28 April 2026",
-    consultationType: "Preventive Healthcare",
-    enabled: true
+    consultationType: "Preventive Health Assessment",
+    enabled: true,
+    verified: true
   },
   {
     id: "test-3",
     patientName: "P. R. Sharma",
     initials: "PR",
-    location: "Patient",
+    location: "Kandivali, Mumbai",
     review: "Very clean clinic atmosphere, prompt appointment management, and polite interaction. Dr. Priyanka explained the dosage instructions in simple terms so there was no confusion at all.",
     rating: 5,
     date: "15 April 2026",
     consultationType: "Follow-up Consultation",
-    enabled: true
+    enabled: true,
+    verified: true
   },
   {
     id: "test-4",
     patientName: "R. Deshmukh",
     initials: "RD",
-    location: "Patient",
+    location: "Malad, Mumbai",
     review: "Her empathetic attitude made me feel comfortable discussing health issues I had postponed for months. The dietary advice she shared was practical and easy to follow alongside my work routine.",
     rating: 5,
     date: "04 March 2026",
-    consultationType: "Women's Health",
-    enabled: true
+    consultationType: "Women's Health Consultation",
+    enabled: true,
+    verified: true
+  },
+  {
+    id: "test-5",
+    patientName: "Dr. Vinay K.",
+    initials: "VK",
+    location: "Borivali, Mumbai",
+    review: "Brought my 7-year-old child for recurrent seasonal cough. Dr. Bhandari has a very gentle bedside manner that immediately eased my son's anxiety. Her diagnosis was precise and child-friendly.",
+    rating: 5,
+    date: "18 February 2026",
+    consultationType: "Family & Child Health Guidance",
+    enabled: true,
+    verified: true
+  },
+  {
+    id: "test-6",
+    patientName: "Meenakshi S.",
+    initials: "MS",
+    location: "Andheri West, Mumbai",
+    review: "The combination of modern medical evaluation with holistic lifestyle counseling is rare to find. She guided me through circadian rhythm adjustments and dietary tweaks that improved my energy levels.",
+    rating: 5,
+    date: "22 January 2026",
+    consultationType: "Lifestyle & Nutrition Guidance",
+    enabled: true,
+    verified: true
   }
 ];
 

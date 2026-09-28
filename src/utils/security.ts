@@ -91,3 +91,10 @@ export function validateMobile(mobile: string): boolean {
   const cleaned = mobile.replace(/[\s-]/g, '');
   return /^(\+91)?[6-9]\d{9}$/.test(cleaned);
 }
+
+export function getLocalDateString(d: Date = new Date()): string {
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}

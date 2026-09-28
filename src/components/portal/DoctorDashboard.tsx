@@ -26,6 +26,7 @@ import { usePortal } from '../../context/PortalContext';
 import { PatientAccount, ConsultationRecord, PrescribedMedicine, AuditLogEntry, MedicalDocumentType } from '../../types/portal';
 import { ConsultationType } from '../../types';
 import { PrescriptionViewerModal } from './PrescriptionViewerModal';
+import { getLocalDateString } from '../../utils/security';
 
 export const DoctorDashboard: React.FC = () => {
   const { 
@@ -60,7 +61,7 @@ export const DoctorDashboard: React.FC = () => {
 
   // New Consultation Form State
   const [consType, setConsType] = useState<ConsultationType>('General In-Clinic Consultation');
-  const [consDate, setConsDate] = useState(new Date().toISOString().split('T')[0]);
+  const [consDate, setConsDate] = useState(getLocalDateString());
   const [chiefComplaint, setChiefComplaint] = useState('');
   const [symptomsInput, setSymptomsInput] = useState('');
   const [diagnosis, setDiagnosis] = useState('');
@@ -85,8 +86,8 @@ export const DoctorDashboard: React.FC = () => {
       route: 'Oral',
       duration: '3 Days',
       instructions: 'After meals',
-      startDate: new Date().toISOString().split('T')[0],
-      endDate: new Date(Date.now() + 3*86400000).toISOString().split('T')[0],
+      startDate: getLocalDateString(),
+      endDate: getLocalDateString(new Date(Date.now() + 3 * 86400000)),
       status: 'Active'
     }
   ]);

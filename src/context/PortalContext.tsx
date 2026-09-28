@@ -855,8 +855,9 @@ export const PortalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       clinic: {
         name: 'Dr. Priyanka Bhandari Clinic',
         doctor: 'Dr. Priyanka Bhandari, BAMS, CGO, PGDEMS',
-        regNo: 'MCI-2018-74921',
-        phone: '+91 98765 43210',
+        hospital: 'Hinduja Hospital',
+        regNo: 'MMC / State Medical Council Reg.',
+        phone: '+91 75066 51415',
         exportedAt: new Date().toISOString()
       },
       patient: pat,

@@ -29,6 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin, onOpenPatientPortal
     { label: 'Services', href: '#services' },
     { label: 'Specializations', href: '#specializations' },
     { label: 'Patient Care', href: '#patient-care' },
+    { label: 'Reviews', href: '#testimonials' },
     { label: 'FAQs', href: '#faqs' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -40,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin, onOpenPatientPortal
     if (target) {
       const topOffset = 80;
       const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+      const offsetPosition = elementPosition + window.scrollY - topOffset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -54,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin, onOpenPatientPortal
     if (target) {
       const topOffset = 80;
       const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+      const offsetPosition = elementPosition + window.scrollY - topOffset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'

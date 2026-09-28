@@ -73,6 +73,8 @@ export interface PatientTestimonial {
   date: string;
   consultationType: string;
   enabled: boolean;
+  verified?: boolean;
+  isDirectSubmission?: boolean;
 }
 
 export interface FAQItem {

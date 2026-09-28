@@ -55,7 +55,7 @@ const MainContent: React.FC<MainContentProps> = ({ onOpenPatientPortal }) => {
     if (appointmentElement) {
       const topOffset = 80;
       const elementPosition = appointmentElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+      const offsetPosition = elementPosition + window.scrollY - topOffset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -68,7 +68,7 @@ const MainContent: React.FC<MainContentProps> = ({ onOpenPatientPortal }) => {
     if (appointmentElement) {
       const topOffset = 80;
       const elementPosition = appointmentElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+      const offsetPosition = elementPosition + window.scrollY - topOffset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -81,7 +81,7 @@ const MainContent: React.FC<MainContentProps> = ({ onOpenPatientPortal }) => {
     if (contactElement) {
       const topOffset = 80;
       const elementPosition = contactElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+      const offsetPosition = elementPosition + window.scrollY - topOffset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'

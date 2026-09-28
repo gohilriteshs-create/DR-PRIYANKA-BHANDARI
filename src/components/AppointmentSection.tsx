@@ -20,6 +20,7 @@ import { useMedicalData } from '../context/MedicalDataContext';
 import { ConsultationType, AppointmentRecord, ReminderChannel } from '../types';
 import { ToastNotification, ToastData } from './ToastNotification';
 import { AnimatedSuccessCheckmark } from './AnimatedSuccessCheckmark';
+import { getLocalDateString } from '../utils/security';
 
 interface AppointmentSectionProps {
   preselectedService?: string;
@@ -80,33 +81,6 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
   const [showToast, setShowToast] = useState(false);
   const [toastData, setToastData] = useState<ToastData | null>(null);
 
-  // Sync preselected service from parent if passed
-  useEffect(() => {
-    if (preselectedService) {
-      if (preselectedService.includes('Preventive')) {
-        setConsultationType('Preventive Health Assessment');
-      } else if (preselectedService.includes('Women')) {
-        setConsultationType('Women\'s Health Consultation');
-      } else if (preselectedService.includes('Child') || preselectedService.includes('Family')) {
-        setConsultationType('Family & Child Health Guidance');
-      } else if (preselectedService.includes('Lifestyle') || preselectedService.includes('Wellness')) {
-        setConsultationType('Lifestyle & Nutrition Guidance');
-      } else if (preselectedService.includes('Follow-up')) {
-        setConsultationType('Follow-up Consultation');
-      } else {
-        setConsultationType('General In-Clinic Consultation');
-      }
-    }
-  }, [preselectedService]);
-
-  // Set default minimum date to today
-  const todayStr = new Date().toISOString().split('T')[0];
-
-  const timeSlots = [
-    '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM',
-    '06:00 PM', '06:30 PM', '07:00 PM', '07:30 PM', '08:00 PM', '08:30 PM'
-  ];
-
   const consultationTypes: ConsultationType[] = [
     'General In-Clinic Consultation',
     'Preventive Health Assessment',
@@ -115,6 +89,37 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
     'Family & Child Health Guidance',
     'Lifestyle & Nutrition Guidance',
     'Online / Tele-Consultation'
+  ];
+
+  // Sync preselected service from parent if passed
+  useEffect(() => {
+    if (preselectedService) {
+      if (consultationTypes.includes(preselectedService as ConsultationType)) {
+        setConsultationType(preselectedService as ConsultationType);
+      } else if (preselectedService.includes('Preventive')) {
+        setConsultationType('Preventive Health Assessment');
+      } else if (preselectedService.includes('Women') || preselectedService.includes('Gynec')) {
+        setConsultationType('Women\'s Health Consultation');
+      } else if (preselectedService.includes('Child') || preselectedService.includes('Family')) {
+        setConsultationType('Family & Child Health Guidance');
+      } else if (preselectedService.includes('Lifestyle') || preselectedService.includes('Wellness') || preselectedService.includes('Ayurved')) {
+        setConsultationType('Lifestyle & Nutrition Guidance');
+      } else if (preselectedService.includes('Follow-up')) {
+        setConsultationType('Follow-up Consultation');
+      } else {
+        setConsultationType('General In-Clinic Consultation');
+      }
+
+      setMessage(prev => prev ? prev : `Selected Service: ${preselectedService}`);
+    }
+  }, [preselectedService]);
+
+  // Set default minimum date to today (local timezone)
+  const todayStr = getLocalDateString();
+
+  const timeSlots = [
+    '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM',
+    '06:00 PM', '06:30 PM', '07:00 PM', '07:30 PM', '08:00 PM', '08:30 PM'
   ];
 
   const handleFormSubmit = (e: React.FormEvent) => {

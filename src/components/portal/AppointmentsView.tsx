@@ -14,6 +14,7 @@ import { usePortal } from '../../context/PortalContext';
 import { PortalAppointment, PortalAppointmentStatus } from '../../types/portal';
 import { ConsultationType } from '../../types';
 import { AnimatedSuccessCheckmark } from '../AnimatedSuccessCheckmark';
+import { getLocalDateString } from '../../utils/security';
 
 export const AppointmentsView: React.FC = () => {
   const { 
@@ -160,7 +161,7 @@ export const AppointmentsView: React.FC = () => {
 
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                   <span className="text-[11px] text-slate-400">
-                    Clinic Desk: +91 98765 43210
+                    Clinic Desk: +91 75066 51415
                   </span>
                   {apt.status !== 'Cancelled' && (
                     <button
@@ -275,7 +276,7 @@ export const AppointmentsView: React.FC = () => {
                     <input
                       type="date"
                       required
-                      min={new Date().toISOString().split('T')[0]}
+                      min={getLocalDateString()}
                       value={bookDate}
                       onChange={(e) => setBookDate(e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:border-sky-600 outline-hidden"

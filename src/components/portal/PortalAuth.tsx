@@ -19,7 +19,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { usePortal } from '../../context/PortalContext';
-import { checkPasswordStrength, validateEmail, validateMobile } from '../../utils/security';
+import { checkPasswordStrength, validateEmail, validateMobile, getLocalDateString } from '../../utils/security';
 
 interface PortalAuthProps {
   onSuccess?: () => void;
@@ -593,7 +593,7 @@ export const PortalAuth: React.FC<PortalAuthProps> = ({
                     required
                     value={signUpDob}
                     onChange={(e) => setSignUpDob(e.target.value)}
-                    max={new Date().toISOString().split('T')[0]}
+                    max={getLocalDateString()}
                     className="w-full pl-9 pr-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:border-sky-600 focus:ring-2 focus:ring-sky-100 transition-all outline-hidden"
                   />
                 </div>

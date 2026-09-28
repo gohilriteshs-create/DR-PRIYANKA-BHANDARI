@@ -55,7 +55,7 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
     if (target) {
       const topOffset = 70;
       const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+      const offsetPosition = elementPosition + window.scrollY - topOffset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'

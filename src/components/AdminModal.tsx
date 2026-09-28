@@ -994,6 +994,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({ isOpen, onClose }) => {
                             preparationTips: ['Bring previous records'],
                             estimatedDuration: '20–30 mins',
                             iconName: 'Stethoscope',
+                            imageUrl: '/services/general-consultation.svg',
                             enabled: true
                           });
                           setNewServiceName('');
@@ -1023,6 +1024,9 @@ export const AdminModal: React.FC<AdminModalProps> = ({ isOpen, onClose }) => {
                             alt={svc.name}
                             referrerPolicy="no-referrer"
                             className="w-14 h-11 object-cover rounded-lg border border-slate-200 shrink-0 bg-slate-100"
+                            onError={(e) => {
+                              (e.currentTarget as HTMLImageElement).src = '/services/general-consultation.svg';
+                            }}
                           />
                           <div className="min-w-0">
                             <div className="flex items-center gap-2">
@@ -1236,22 +1240,50 @@ export const AdminModal: React.FC<AdminModalProps> = ({ isOpen, onClose }) => {
                   <div className="space-y-3">
                     {testimonials.map((t) => (
                       <div key={t.id} className="p-4 bg-white rounded-xl border border-slate-200 flex items-center justify-between gap-4">
-                        <div className="text-xs">
-                          <div className="font-bold text-slate-800">{t.patientName}</div>
-                          <p className="text-slate-600 italic mt-0.5">"{t.review}"</p>
+                        <div className="text-xs space-y-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-slate-800">{t.patientName}</span>
+                            <span className="px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 font-bold text-[10px]">
+                              ★ {t.rating}.0
+                            </span>
+                            {t.consultationType && (
+                              <span className="px-1.5 py-0.5 rounded bg-sky-50 text-sky-700 font-medium text-[10px]">
+                                {t.consultationType}
+                              </span>
+                            )}
+                            {t.isDirectSubmission && (
+                              <span className="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold text-[10px]">
+                                Direct Patient Review
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-slate-600 italic mt-0.5 line-clamp-2">"{t.review}"</p>
+                          <div className="text-[10px] text-slate-400">
+                            {t.date} {t.location ? `· ${t.location}` : ''}
+                          </div>
                         </div>
                         <div className="flex items-center gap-2 shrink-0">
                           <button
                             type="button"
                             onClick={() => toggleTestimonial(t.id)}
-                            className="p-1 text-xs text-sky-800 hover:underline"
+                            className={`px-2 py-1 text-xs rounded-md font-semibold border ${
+                              t.enabled
+                                ? 'bg-teal-50 border-teal-200 text-teal-800'
+                                : 'bg-slate-100 border-slate-300 text-slate-500'
+                            }`}
                           >
                             {t.enabled ? 'Active' : 'Hidden'}
                           </button>
                           <button
                             type="button"
-                            onClick={() => deleteTestimonial(t.id)}
-                            className="p-1 text-slate-400 hover:text-rose-600"
+                            onClick={() => {
+                              if (window.confirm(`Delete review from ${t.patientName}?`)) {
+                                deleteTestimonial(t.id);
+                                showSaveSuccess('Review deleted.');
+                              }
+                            }}
+                            className="p-1.5 text-slate-400 hover:text-rose-600 rounded-md transition-colors"
+                            title="Delete Review"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>

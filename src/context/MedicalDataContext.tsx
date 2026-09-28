@@ -146,7 +146,16 @@ export const MedicalDataProvider: React.FC<{ children: React.ReactNode }> = ({ c
     try {
       const stored = localStorage.getItem(`${STORAGE_KEY}_testimonials`) ||
         localStorage.getItem('dr_priyanka_bhandari_medical_data_v1_testimonials');
-      return stored ? JSON.parse(stored) : initialTestimonials;
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed.map((t: PatientTestimonial) => ({
+            ...t,
+            verified: t.verified !== undefined ? t.verified : true
+          }));
+        }
+      }
+      return initialTestimonials;
     } catch {
       return initialTestimonials;
     }
@@ -284,7 +293,14 @@ export const MedicalDataProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
   const addService = (newService: Omit<MedicalService, 'id'>) => {
     const id = `service-${Date.now()}`;
-    setServices(prev => [...prev, { ...newService, id }]);
+    setServices(prev => [
+      ...prev,
+      {
+        ...newService,
+        id,
+        imageUrl: newService.imageUrl || '/services/general-consultation.svg'
+      }
+    ]);
   };
 
   const updateService = (id: string, updated: Partial<MedicalService>) => {
