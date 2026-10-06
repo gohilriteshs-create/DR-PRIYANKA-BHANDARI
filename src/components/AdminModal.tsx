@@ -21,7 +21,6 @@ import {
   RotateCcw,
   Bell,
   Send,
-  MessageCircle,
   CheckCircle2,
   Search,
   CalendarCheck,
@@ -31,6 +30,7 @@ import {
   ArrowRight,
   ExternalLink
 } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import { useMedicalData } from '../context/MedicalDataContext';
 import { MedicalService, AppointmentRecord, FAQItem, PatientTestimonial, AppointmentStatus } from '../types';
 
@@ -613,7 +613,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({ isOpen, onClose }) => {
                                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 font-semibold text-xs transition-colors"
                                   title="Dispatch WhatsApp Confirmation"
                                 >
-                                  <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                                  <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-600" />
                                   <span>WhatsApp Confirmation</span>
                                 </button>
 
@@ -1422,7 +1422,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({ isOpen, onClose }) => {
                             className="rounded text-emerald-700 w-4 h-4"
                           />
                           <div className="flex items-center gap-1.5">
-                            <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                            <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-600" />
                             <span>Enable WhatsApp Reminders</span>
                           </div>
                         </label>

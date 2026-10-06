@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  MessageCircle, 
   ArrowUp, 
   Home, 
   Stethoscope, 
@@ -9,6 +8,7 @@ import {
   User,
   ShieldCheck
 } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import { useMedicalData } from '../context/MedicalDataContext';
 
 interface FloatingActionsProps {
@@ -124,7 +124,7 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
             aria-label="Chat with Dr. Priyanka Bhandari Clinic on WhatsApp"
             className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
           >
-            <MessageCircle className="w-6 h-6 fill-white text-emerald-600" />
+            <WhatsAppIcon className="w-6 h-6 text-white" />
           </a>
         </div>
 

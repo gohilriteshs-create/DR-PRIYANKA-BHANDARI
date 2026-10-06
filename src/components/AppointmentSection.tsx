@@ -8,7 +8,6 @@ import {
   MessageSquare, 
   CheckCircle2, 
   Printer, 
-  MessageCircle, 
   AlertCircle,
   HelpCircle,
   ShieldCheck,
@@ -16,6 +15,7 @@ import {
   Bell,
   Loader2
 } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import { useMedicalData } from '../context/MedicalDataContext';
 import { ConsultationType, AppointmentRecord, ReminderChannel } from '../types';
 import { ToastNotification, ToastData } from './ToastNotification';
@@ -378,7 +378,7 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-2xs transition-colors"
                   >
-                    <MessageCircle className="w-3.5 h-3.5" />
+                    <WhatsAppIcon className="w-3.5 h-3.5" />
                     <span>Confirm via WhatsApp</span>
                   </a>
                 </div>
@@ -587,7 +587,7 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
                                   : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
                               }`}
                             >
-                              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                              <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-600" />
                               <span>WhatsApp</span>
                             </button>
                           )}
@@ -661,7 +661,7 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/90 rounded-lg transition-colors whitespace-nowrap"
                     >
-                      <MessageCircle className="w-4 h-4 text-emerald-700" />
+                      <WhatsAppIcon className="w-4 h-4 text-emerald-700" />
                       <span>Book via WhatsApp</span>
                     </a>
                   </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, PhoneCall, ShieldCheck, Heart, UserCheck, Stethoscope, Clock, MapPin } from 'lucide-react';
 import { useMedicalData } from '../context/MedicalDataContext';
+import { HeroECGBackground } from './HeroECGBackground';
 
 interface HeroProps {
   onOpenAppointment: () => void;
@@ -29,7 +30,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment, onOpenContact }) 
         aria-hidden="true"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      {/* Heartbeat ECG Telemetry Lines & Traveling Pulse (2 traces, ecg-travel active) */}
+      <HeroECGBackground />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: Heading, Subheading, CTAs & Trust Indicators */}

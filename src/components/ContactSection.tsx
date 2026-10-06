@@ -3,7 +3,6 @@ import {
   MapPin, 
   Phone, 
   Mail, 
-  MessageCircle, 
   Clock, 
   Navigation, 
   ExternalLink,
@@ -17,6 +16,8 @@ import {
 } from 'lucide-react';
 import { useMedicalData } from '../context/MedicalDataContext';
 import { ClinicInteractiveMap } from './ClinicInteractiveMap';
+import { ClinicPhotoCarousel } from './ClinicPhotoCarousel';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export const ContactSection: React.FC = () => {
   const { profile, clinicContact } = useMedicalData();
@@ -46,7 +47,7 @@ export const ContactSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-14">
+        <div className="max-w-3xl mx-auto text-center mb-10">
           <p className="text-xs font-bold uppercase tracking-wider text-sky-800">
             Clinic Access & Location
           </p>
@@ -56,6 +57,11 @@ export const ContactSection: React.FC = () => {
           <p className="mt-3 text-base text-slate-600">
             Get in touch with Dr. Priyanka Bhandari’s medical practice for appointment confirmations, location assistance, or patient queries.
           </p>
+        </div>
+
+        {/* Clinic Recognition Photo Carousel: Exterior, Reception, Consultation & Examination Rooms */}
+        <div className="mb-12">
+          <ClinicPhotoCarousel directionsUrl={directionsUrl} />
         </div>
 
         {/* Contact Info & Interactive Map Grid */}
@@ -115,7 +121,7 @@ export const ContactSection: React.FC = () => {
 
                 {/* WhatsApp */}
                 <div className="flex items-start gap-3">
-                  <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-1" />
+                  <WhatsAppIcon className="w-4 h-4 text-emerald-600 shrink-0 mt-1" />
                   <div>
                     <span className="font-semibold text-slate-800 block text-xs uppercase tracking-wider">
                       WhatsApp Inquiries
@@ -165,7 +171,7 @@ export const ContactSection: React.FC = () => {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-emerald-700 text-white font-semibold text-xs hover:bg-emerald-800 transition-colors shadow-2xs text-center"
                 >
-                  <MessageCircle className="w-3.5 h-3.5" />
+                  <WhatsAppIcon className="w-3.5 h-3.5" />
                   <span>WhatsApp</span>
                 </a>
 

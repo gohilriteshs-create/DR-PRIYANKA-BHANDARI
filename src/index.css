@@ -73,10 +73,50 @@
   animation: checkmarkHalo 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Cardiac Telemetry ECG Pulse Line Animations */
+@keyframes ecgTravel {
+  0% {
+    stroke-dashoffset: 2420;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ecg-travel {
+  0% {
+    stroke-dashoffset: 2420;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.ecg-travel,
+.ecg-travel.active {
+  stroke-dasharray: 220 2200;
+  animation: ecgTravel 5.5s linear infinite;
+  will-change: stroke-dashoffset;
+}
+
+.ecg-travel-secondary,
+.ecg-travel.active.trace-2,
+.ecg-travel.trace-2 {
+  stroke-dasharray: 200 2200;
+  animation: ecgTravel 6.8s linear infinite;
+  animation-delay: 1.8s;
+  will-change: stroke-dashoffset;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-checkmark-pop,
   .animate-checkmark-stroke,
-  .animate-checkmark-halo {
+  .animate-checkmark-halo,
+  .ecg-travel,
+  .ecg-travel.active,
+  .ecg-travel-secondary,
+  .ecg-travel.active.trace-2,
+  .ecg-travel.trace-2 {
     animation: none !important;
     stroke-dashoffset: 0 !important;
     transform: none !important;
