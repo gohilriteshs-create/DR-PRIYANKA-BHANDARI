@@ -163,15 +163,15 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
           <span className="text-[10px] mt-0.5 tracking-tight">Services</span>
         </button>
 
-        {/* 3. Book Consultation (Elevated Center Action) */}
+        {/* 3. Book Consultation (3D Elevated Center Action) */}
         <button
           type="button"
           onClick={onOpenAppointment}
-          className="flex flex-col items-center justify-center min-w-[62px] -mt-3.5 group"
+          className="flex flex-col items-center justify-center min-w-[62px] -mt-4 group cursor-pointer"
           aria-label="Book an Appointment"
         >
-          <div className="w-11 h-11 rounded-full bg-sky-800 text-white flex items-center justify-center shadow-md border-2 border-white group-active:scale-95 group-hover:bg-sky-900 transition-transform">
-            <Calendar className="w-5 h-5 text-sky-100" />
+          <div className="w-11 h-11 rounded-full bg-gradient-to-b from-sky-700 via-sky-850 to-sky-950 text-white flex items-center justify-center shadow-[0_5px_0_#075985,0_8px_16px_rgba(3,105,161,0.35)] border-2 border-white group-active:translate-y-1 group-active:shadow-[0_1px_0_#075985] group-hover:scale-105 transition-all">
+            <Calendar className="w-5 h-5 text-sky-100 group-hover:rotate-12 transition-transform duration-300" />
           </div>
           <span className={`text-[10px] mt-1 font-bold ${activeSection === 'appointment' ? 'text-sky-900' : 'text-slate-700'}`}>
             Book

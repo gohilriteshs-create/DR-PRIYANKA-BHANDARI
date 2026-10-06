@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Calendar, 
   Clock, 
@@ -13,7 +13,8 @@ import {
   ShieldCheck,
   Download,
   Bell,
-  Loader2
+  Loader2,
+  Sparkles
 } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { useMedicalData } from '../context/MedicalDataContext';
@@ -80,6 +81,35 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
   // Success Toast Notification State
   const [showToast, setShowToast] = useState(false);
   const [toastData, setToastData] = useState<ToastData | null>(null);
+
+  // 3D Interactive Card Physics State
+  const [cardTilt, setCardTilt] = useState({ x: 0, y: 0 });
+  const [cardGlare, setCardGlare] = useState({ x: 50, y: 50, opacity: 0 });
+  const [isCardHovered, setIsCardHovered] = useState(false);
+  const formCardRef = useRef<HTMLDivElement>(null);
+
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!formCardRef.current) return;
+    const rect = formCardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateY = ((x - centerX) / centerX) * 4; // subtle 3D tilt: -4 to 4 deg
+    const rotateX = -((y - centerY) / centerY) * 4;
+    setCardTilt({ x: rotateX, y: rotateY });
+    setCardGlare({
+      x: (x / rect.width) * 100,
+      y: (y / rect.height) * 100,
+      opacity: 0.16
+    });
+  };
+
+  const handleCardMouseLeave = () => {
+    setIsCardHovered(false);
+    setCardTilt({ x: 0, y: 0 });
+    setCardGlare({ x: 50, y: 50, opacity: 0 });
+  };
 
   const consultationTypes: ConsultationType[] = [
     'General In-Clinic Consultation',
@@ -261,9 +291,9 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
 
         <div className="max-w-4xl mx-auto">
           
-          {/* If Booking is Submitted: Rich Confirmation Slip with Subtle Success Animation */}
+          {/* If Booking is Submitted: Rich Confirmation Slip with 3D Card Unfold Effect */}
           {submittedBooking ? (
-            <div className="bg-sky-50/50 rounded-2xl p-6 sm:p-10 border border-sky-200/90 shadow-sm animate-in fade-in zoom-in-98 duration-300">
+            <div className="animate-card-unfold-3d bg-sky-50/70 rounded-2xl p-6 sm:p-10 border border-sky-200/90 shadow-[0_16px_48px_-8px_rgba(3,105,161,0.22),0_4px_16px_rgba(15,23,42,0.06)]">
               
               <div className="text-center pb-6 border-b border-sky-100">
                 <div className="flex justify-center mb-4">
@@ -386,8 +416,26 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
 
             </div>
           ) : (
-            /* Booking Form Container */
-            <div className="bg-slate-50/70 rounded-2xl p-6 sm:p-10 border border-slate-200/90 shadow-xs">
+            /* 3D Interactive Booking Form Container */
+            <div 
+              ref={formCardRef}
+              onMouseMove={handleCardMouseMove}
+              onMouseEnter={() => setIsCardHovered(true)}
+              onMouseLeave={handleCardMouseLeave}
+              style={{
+                transform: `perspective(1200px) rotateX(${cardTilt.x}deg) rotateY(${cardTilt.y}deg)`,
+                transition: isCardHovered ? 'transform 0.08s ease-out' : 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+              }}
+              className="preserve-3d relative bg-white/95 rounded-2xl p-6 sm:p-10 border border-slate-200/90 shadow-[0_16px_40px_-12px_rgba(3,105,161,0.12),0_4px_16px_rgba(15,23,42,0.06)] overflow-hidden"
+            >
+              {/* Dynamic Specular Sheen Glare */}
+              <div
+                className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-200"
+                style={{
+                  opacity: cardGlare.opacity,
+                  background: `radial-gradient(circle at ${cardGlare.x}% ${cardGlare.y}%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 65%)`
+                }}
+              />
               
               {errorMessage && (
                 <div className="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-xs font-medium text-rose-800 flex items-center gap-2.5">
@@ -633,11 +681,11 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
                 {/* Form Actions */}
                 <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                   
-                  {/* Primary Submit */}
+                  {/* Primary Submit with 3D Tactile Push Button Effect */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-sky-800 hover:bg-sky-900 active:bg-sky-950 rounded-lg shadow-sm hover:shadow transition-all disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
+                    className="btn-3d-primary shine-3d-effect group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 text-sm font-bold text-white bg-sky-800 rounded-xl transition-all disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -646,20 +694,20 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
                       </>
                     ) : (
                       <>
-                        <Calendar className="w-4 h-4 text-sky-200" />
+                        <Calendar className="w-4 h-4 text-sky-200 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
                         <span>Request Appointment</span>
                       </>
                     )}
                   </button>
 
-                  {/* Configurable WhatsApp Action */}
+                  {/* Configurable WhatsApp Action with 3D Elevation */}
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-slate-500 font-medium">Or</span>
                     <a
                       href={generateWhatsAppUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/90 rounded-lg transition-colors whitespace-nowrap"
+                      className="btn-3d-emerald inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-emerald-850 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300/80 rounded-xl transition-all whitespace-nowrap text-emerald-900"
                     >
                       <WhatsAppIcon className="w-4 h-4 text-emerald-700" />
                       <span>Book via WhatsApp</span>

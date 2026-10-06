@@ -159,9 +159,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin, onOpenPatientPortal
               <button
                 type="button"
                 onClick={scrollToAppointment}
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-sky-800 hover:bg-sky-900 active:bg-sky-950 rounded-lg shadow-xs hover:shadow transition-all duration-150 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
+                className="btn-3d-primary shine-3d-effect group hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-bold text-white bg-sky-800 rounded-lg whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 cursor-pointer"
               >
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-4 h-4 text-sky-200 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
                 <span>Book Appointment</span>
               </button>
 

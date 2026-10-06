@@ -64,21 +64,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment, onOpenContact }) 
               {profile.shortBio}
             </p>
 
-            {/* CTAs */}
+            {/* CTAs with 3D Tactile Animation Effect */}
             <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
               <button
                 type="button"
                 onClick={onOpenAppointment}
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3 text-base font-semibold text-white bg-sky-800 hover:bg-sky-900 active:bg-sky-950 rounded-lg shadow-sm hover:shadow transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
+                className="btn-3d-primary shine-3d-effect group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-base font-bold text-white bg-sky-800 rounded-xl transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 cursor-pointer"
               >
-                <Calendar className="w-5 h-5 text-sky-200" />
+                <Calendar className="w-5 h-5 text-sky-200 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
                 <span>Book an Appointment</span>
               </button>
 
               <button
                 type="button"
                 onClick={onOpenContact}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold text-slate-700 bg-white hover:bg-slate-50 active:bg-slate-100 border border-slate-300 rounded-lg shadow-2xs hover:shadow-xs transition-all duration-150 focus-visible:outline-2 focus-visible:outline-slate-600"
+                className="btn-3d-secondary inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl transition-all duration-150 focus-visible:outline-2 focus-visible:outline-slate-600 cursor-pointer"
               >
                 <PhoneCall className="w-4 h-4 text-sky-700" />
                 <span>Contact Doctor</span>
