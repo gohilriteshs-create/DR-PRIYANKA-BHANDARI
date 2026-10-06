@@ -15,8 +15,7 @@ import {
   Car
 } from 'lucide-react';
 import { useMedicalData } from '../context/MedicalDataContext';
-import { ClinicInteractiveMap } from './ClinicInteractiveMap';
-import { ClinicPhotoCarousel } from './ClinicPhotoCarousel';
+import { GoogleMapSimple } from './GoogleMapSimple';
 import { WhatsAppIcon } from './WhatsAppIcon';
 
 export const ContactSection: React.FC = () => {
@@ -47,7 +46,7 @@ export const ContactSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-10">
+        <div className="max-w-3xl mx-auto text-center mb-14">
           <p className="text-xs font-bold uppercase tracking-wider text-sky-800">
             Clinic Access & Location
           </p>
@@ -57,11 +56,6 @@ export const ContactSection: React.FC = () => {
           <p className="mt-3 text-base text-slate-600">
             Get in touch with Dr. Priyanka Bhandari’s medical practice for appointment confirmations, location assistance, or patient queries.
           </p>
-        </div>
-
-        {/* Clinic Recognition Photo Carousel: Exterior, Reception, Consultation & Examination Rooms */}
-        <div className="mb-12">
-          <ClinicPhotoCarousel directionsUrl={directionsUrl} />
         </div>
 
         {/* Contact Info & Interactive Map Grid */}
@@ -226,16 +220,13 @@ export const ContactSection: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Interactive Clinic Map & Transit Navigation */}
+          {/* Right Column: Google Maps Location & Transit Navigation */}
           <div className="lg:col-span-6 space-y-6">
-            <ClinicInteractiveMap
+            <GoogleMapSimple
               clinicName={clinicContact.clinicName}
-              doctorName={profile.name}
-              qualification={profile.qualification}
               address={fullAddress}
-              phone={clinicContact.phone}
+              embedUrl={mapEmbedUrl}
               directionsUrl={directionsUrl}
-              googleMapsEmbedUrl={mapEmbedUrl}
             />
 
             {/* Practical Arrival & Landmark Guide */}
